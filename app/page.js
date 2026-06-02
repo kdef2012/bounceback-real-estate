@@ -100,6 +100,20 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="testimonials" className="section-container bg-dark" style={{ textAlign: 'center', padding: '80px 20px' }}>
+        <h2 className="section-title">Client Success Stories</h2>
+        <div style={{ maxWidth: '800px', margin: '0 auto', background: 'var(--clr-black)', padding: '40px', borderRadius: '20px', border: '1px solid var(--clr-border)', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '-20px', left: '50%', transform: 'translateX(-50%)', background: 'var(--clr-gold)', color: 'var(--clr-black)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: 'bold' }}>"</div>
+          <p style={{ color: 'var(--clr-white)', fontSize: '1.2rem', lineHeight: '1.8', fontStyle: 'italic', marginBottom: '20px', marginTop: '20px' }}>
+            "She is a great listener who will direct you in the right direction if she can’t help you... business minded, punctual, hard working individual... I highly recommend her."
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', color: 'var(--clr-gold)', marginBottom: '10px' }}>
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p style={{ color: 'var(--clr-gray)', fontWeight: 'bold' }}>— Verified Facebook Review</p>
+        </div>
+      </section>
+
       <section className="cta-section">
         <div className="cta-content">
           <h2>Ready to Dominate the Market?</h2>

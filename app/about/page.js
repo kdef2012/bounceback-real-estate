@@ -15,7 +15,7 @@ export default function AboutPage() {
           <div>
             <h2 style={{ color: 'var(--clr-white)', marginBottom: '20px', fontSize: '2.5rem' }}>Pioneering the Future of Real Estate</h2>
             <p style={{ color: 'var(--clr-gray)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.1rem' }}>
-              At Bounceback Real Estate Group, we believe that finding a home shouldn't be a transaction—it should be a transformation. Founded with the vision to strip away the opacity of traditional real estate, we leverage cutting-edge AI and data analytics to empower our clients.
+              At Bounceback Real Estate Group, we pride ourselves on delivering an unparalleled real estate experience built on trust, punctuality, and hard work. We are deeply committed to listening to your unique needs, answering your questions honestly, and guiding you in the right direction. Whether you're buying your first home or selling a luxury property, our dedicated approach ensures a seamless and successful journey.
             </p>
             <p style={{ color: 'var(--clr-gray)', lineHeight: '1.8', marginBottom: '30px', fontSize: '1.1rem' }}>
               Whether you are buying your first home, securing a luxury penthouse, or seeking off-market investment opportunities, our revolutionary platform and dedicated team ensure you always have the upper hand.
