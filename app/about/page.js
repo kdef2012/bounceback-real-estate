@@ -17,9 +17,14 @@ export default function AboutPage() {
             <p style={{ color: 'var(--clr-gray)', lineHeight: '1.8', marginBottom: '20px', fontSize: '1.1rem' }}>
               At Bounceback Real Estate Group, we believe that finding a home shouldn't be a transaction—it should be a transformation. Founded with the vision to strip away the opacity of traditional real estate, we leverage cutting-edge AI and data analytics to empower our clients.
             </p>
-            <p style={{ color: 'var(--clr-gray)', lineHeight: '1.8', fontSize: '1.1rem' }}>
+            <p style={{ color: 'var(--clr-gray)', lineHeight: '1.8', marginBottom: '30px', fontSize: '1.1rem' }}>
               Whether you are buying your first home, securing a luxury penthouse, or seeking off-market investment opportunities, our revolutionary platform and dedicated team ensure you always have the upper hand.
             </p>
+            <blockquote style={{ borderLeft: '4px solid var(--clr-gold)', paddingLeft: '20px', fontStyle: 'italic', color: 'var(--clr-white)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+              "Be the impossible so that others can see with God all things are possible! I am your Real Estate Closer."
+              <br/><br/>
+              <span style={{ color: 'var(--clr-gold)', fontWeight: 'bold', fontStyle: 'normal', fontSize: '1rem' }}>— Valerie James</span>
+            </blockquote>
           </div>
           <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
              <Image src="/assets/headshot1.png" alt="Founder of Bounceback Real Estate" width={600} height={800} style={{ width: '100%', height: 'auto', display: 'block' }} />
