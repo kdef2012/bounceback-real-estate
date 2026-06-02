@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, UserCircle } from 'lucide-react';
 import Image from 'next/image';
+import AuthModal from './AuthModal';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,23 +24,29 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-      <div className="nav-container">
-        <div className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+    <>
+      <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
+        <div className="nav-container">
+          <div className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </div>
+          <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+            <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+            <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
+            <Link href="/listings" onClick={() => setMenuOpen(false)}>Exclusive Listings</Link>
+            <button onClick={() => { setAuthOpen(true); setMenuOpen(false); }} style={{ background: 'transparent', border: 'none', color: 'var(--clr-white)', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold' }}>
+              <UserCircle size={20} /> Sign In
+            </button>
+            <Link href="/contact" className="btn-primary" onClick={() => setMenuOpen(false)}>Get Started</Link>
+          </div>
+          <div className="logo">
+            <Link href="/">
+              <Image src="/assets/logo.png" alt="Bounceback Real Estate Logo" width={140} height={140} className="brand-logo" />
+            </Link>
+          </div>
         </div>
-        <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-          <Link href="/listings" onClick={() => setMenuOpen(false)}>Exclusive Listings</Link>
-          <Link href="/contact" className="btn-primary" onClick={() => setMenuOpen(false)}>Get Started</Link>
-        </div>
-        <div className="logo">
-          <Link href="/">
-            <Image src="/assets/logo.png" alt="Bounceback Real Estate Logo" width={140} height={140} className="brand-logo" />
-          </Link>
-        </div>
-      </div>
-    </nav>
+      </nav>
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
+    </>
   );
 }
