@@ -86,7 +86,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p style={{ color: 'var(--clr-gray)', fontSize: '0.9rem', marginBottom: '4px' }}>Email Us</p>
-              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>hello@bouncebackre.com</p>
+              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>vjamesis@outlook.com</p>
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p style={{ color: 'var(--clr-gray)', fontSize: '0.9rem', marginBottom: '4px' }}>Call Us</p>
-              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>+1 (800) 555-0199</p>
+              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>(336) 307-9512</p>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p style={{ color: 'var(--clr-gray)', fontSize: '0.9rem', marginBottom: '4px' }}>Headquarters</p>
-              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>100 Future Way, Suite 500<br/>Winston-Salem, NC 27101</p>
+              <p style={{ color: 'var(--clr-white)', fontWeight: 'bold' }}>2203 Eastchester Drive<br/>High Point, NC 27265</p>
             </div>
           </div>
         </div>
