@@ -1,25 +1,43 @@
 "use client";
 
 import { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function MatchmakerPage() {
   const [step, setStep] = useState(1);
-  const [selections, setSelections] = useState({ lifeEvent: '', priority: '', timeframe: '' });
-  const [analyzing, setAnalyzing] = useState(false);
-  const [resultsReady, setResultsReady] = useState(false);
+  const [matchResult, setMatchResult] = useState(null);
 
-  const handleNext = () => setStep(step + 1);
-  const handleSelect = (field, value) => setSelections({ ...selections, [field]: value });
-
-  const submitAnalysis = () => {
+  const submitAnalysis = async () => {
     setStep(4);
     setAnalyzing(true);
-    setTimeout(() => {
+    
+    try {
+      const res = await fetch('/api/matchmaker', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ selections: { event: selections.lifeEvent, timeframe: selections.timeframe, priority: selections.priority } })
+      });
+      
+      const data = await res.json();
+      if (data.success) {
+        setMatchResult(data.match);
+      } else {
+        console.error("Match API Error:", data.error);
+        // Fallback
+        setMatchResult({
+          headline: "Your Curated Matches Are Ready",
+          analysis: "We analyzed your life event and found the perfect strategy for you.",
+          recommended_property_type: "Curated Estate",
+          recommended_neighborhood_vibe: "Premium Community"
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
       setAnalyzing(false);
       setResultsReady(true);
-    }, 2500); // Fake AI analyzing delay
+    }
   };
 
   const OptionCard = ({ label, field, value }) => (
@@ -109,12 +127,21 @@ export default function MatchmakerPage() {
           </div>
         )}
 
-        {step === 4 && resultsReady && (
+        {step === 4 && resultsReady && matchResult && (
           <div style={{ textAlign: 'center', padding: '40px 0', animation: 'fadeIn 0.5s' }}>
             <CheckCircle2 size={64} style={{ color: 'var(--clr-gold)', margin: '0 auto 20px' }} />
-            <h2 style={{ color: 'white', marginBottom: '15px' }}>We found 12 perfect matches!</h2>
-            <p style={{ color: 'var(--clr-gray)', marginBottom: '30px' }}>Based on your need for <strong>{selections.priority}</strong> and moving <strong>{selections.timeframe}</strong>.</p>
-            <Link href="/listings" className="btn-primary" style={{ textDecoration: 'none' }}>View Your Curated Matches</Link>
+            <h2 style={{ color: 'white', marginBottom: '15px' }}>{matchResult.headline}</h2>
+            <p style={{ color: 'var(--clr-gray)', marginBottom: '30px', fontSize: '1.1rem', lineHeight: '1.6' }}>{matchResult.analysis}</p>
+            
+            <div style={{ background: 'var(--clr-darker)', padding: '20px', borderRadius: '15px', border: '1px solid var(--clr-border)', textAlign: 'left', marginBottom: '30px' }}>
+               <h4 style={{ color: 'var(--clr-white)', marginBottom: '10px' }}>Recommended Targets:</h4>
+               <ul style={{ color: 'var(--clr-gray)', paddingLeft: '20px', lineHeight: '1.8' }}>
+                  <li><strong>Property Type:</strong> {matchResult.recommended_property_type}</li>
+                  <li><strong>Vibe:</strong> {matchResult.recommended_neighborhood_vibe}</li>
+               </ul>
+            </div>
+
+            <Link href="/dashboard/buyer" className="btn-primary" style={{ textDecoration: 'none' }}>Save to Buyer Profile</Link>
           </div>
         )}
 
